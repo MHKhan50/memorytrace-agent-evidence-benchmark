@@ -1,0 +1,50 @@
+{
+  "benchmark": "MemoryTrace",
+  "seed": 20261028,
+  "n_scenarios": 600,
+  "candidate_rows": 3600,
+  "policy_rows": 2400,
+  "results": [
+    {
+      "policy": "keyword_only",
+      "scenarios": 600,
+      "coverage": 1.0,
+      "accuracy_among_answered": 0.1617,
+      "correct_rate_all_scenarios": 0.1617,
+      "stale_selection_rate": 0.1017,
+      "unsupported_selection_rate": 0.565,
+      "nonconsensual_selection_rate": 0.0167
+    },
+    {
+      "policy": "latest_relevant",
+      "scenarios": 600,
+      "coverage": 1.0,
+      "accuracy_among_answered": 0.2133,
+      "correct_rate_all_scenarios": 0.2133,
+      "stale_selection_rate": 0.0,
+      "unsupported_selection_rate": 0.5217,
+      "nonconsensual_selection_rate": 0.17
+    },
+    {
+      "policy": "provenance_gate",
+      "scenarios": 600,
+      "coverage": 1.0,
+      "accuracy_among_answered": 0.3717,
+      "correct_rate_all_scenarios": 0.3717,
+      "stale_selection_rate": 0.0,
+      "unsupported_selection_rate": 0.0,
+      "nonconsensual_selection_rate": 0.0
+    },
+    {
+      "policy": "strict_evidence",
+      "scenarios": 600,
+      "coverage": 0.9683,
+      "accuracy_among_answered": 0.3718,
+      "correct_rate_all_scenarios": 0.36,
+      "stale_selection_rate": 0.0,
+      "unsupported_selection_rate": 0.0,
+      "nonconsensual_selection_rate": 0.0
+    }
+  ],
+  "interpretation_warning": "Synthetic simulation only; not a real LLM or production-agent evaluation."
+}

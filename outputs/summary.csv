@@ -1,0 +1,5 @@
+policy,scenarios,coverage,accuracy_among_answered,correct_rate_all_scenarios,stale_selection_rate,unsupported_selection_rate,nonconsensual_selection_rate
+keyword_only,600,1.0,0.1617,0.1617,0.1017,0.565,0.0167
+latest_relevant,600,1.0,0.2133,0.2133,0.0,0.5217,0.17
+provenance_gate,600,1.0,0.3717,0.3717,0.0,0.0,0.0
+strict_evidence,600,0.9683,0.3718,0.36,0.0,0.0,0.0

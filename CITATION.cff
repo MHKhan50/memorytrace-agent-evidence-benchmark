@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this benchmark, cite the repository release or commit you actually used."
+title: "MemoryTrace: A Synthetic Benchmark for Evidence-Aware Agent Memory"
+authors:
+  - family-names: Hussain
+    given-names: Muzammal
+version: 0.1.0
+date-released: 2026-10-28
+type: software
+license: MIT
