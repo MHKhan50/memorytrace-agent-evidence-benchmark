@@ -1,0 +1,9 @@
+model,language,prompt,scenarios,correct_answer,current_verified,verified_conflict,stale_archive,recent_unverified,restricted_note,lexical_distractor,flagged_conflict,abstained,invalid
+llama3.1:8b,English,plain,20,11,11,6,0,1,2,0,0,0,0
+llama3.1:8b,English,rule,20,12,12,8,0,0,0,0,0,0,0
+llama3.1:8b,Roman Urdu,plain,20,9,9,6,0,2,3,0,0,0,0
+llama3.1:8b,Roman Urdu,rule,20,11,11,9,0,0,0,0,0,0,0
+qwen2.5:3b,English,plain,20,1,0,0,0,0,0,0,0,20,0
+qwen2.5:3b,English,rule,20,1,1,0,0,0,0,0,0,16,3
+qwen2.5:3b,Roman Urdu,plain,20,1,0,0,0,0,0,0,0,19,1
+qwen2.5:3b,Roman Urdu,rule,20,1,1,2,0,0,0,0,0,16,1
