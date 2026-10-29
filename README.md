@@ -27,22 +27,47 @@ python3 llm_probe/probe.py               # part 3: 160 prompts with two local mo
 ```
 
 ## Results
-_To be filled from my run._
+From my run on a MacBook M4 (16 GB). Parts 1 and 2 are deterministic; part 3 is one run at temperature 0 on 20 scenarios per row. "Unsafe memory used" adds unverified, non-consented and stale picks, scored on the true labels.
 
 ### Part 2: conflicts and noisy labels
 | Label error | Policy | Coverage | Wrong answers | Unsafe memory used |
 |---|---|---|---|---|
-| | | | | |
+| 0% | `provenance_gate` | 100.0% | 62.8% | 0.0% |
+| 0% | `strict_evidence` | 96.8% | 60.8% | 0.0% |
+| 0% | `conflict_abstain` | 19.8% | 19.8% | 0.0% |
+| 5% | `provenance_gate` | 96.3% | 59.5% | 5.0% |
+| 5% | `strict_evidence` | 91.2% | 56.7% | 4.8% |
+| 5% | `conflict_abstain` | 31.7% | 23.8% | 1.2% |
+| 10% | `provenance_gate` | 91.5% | 56.2% | 9.5% |
+| 10% | `strict_evidence` | 85.5% | 53.0% | 8.2% |
+| 10% | `conflict_abstain` | 38.3% | 25.2% | 3.0% |
+| 20% | `provenance_gate` | 81.7% | 49.2% | 21.3% |
+| 20% | `strict_evidence` | 73.0% | 44.3% | 17.8% |
+| 20% | `conflict_abstain` | 43.8% | 27.8% | 10.5% |
 
 ![Effect of label errors](outputs/noise_effects.svg)
 
 ### Part 3: which memory the models used
 | Model | Language | Prompt | Current verified | Verified conflict | Stale | Unverified | No consent | Other project | CONFLICT | Unknown |
 |---|---|---|---|---|---|---|---|---|---|---|
-| | | | | | | | | | | |
+| llama3.1:8b | English | plain | 11 | 6 | 0 | 1 | 2 | 0 | 0 | 0 |
+| llama3.1:8b | English | rule | 12 | 8 | 0 | 0 | 0 | 0 | 0 | 0 |
+| llama3.1:8b | Roman Urdu | plain | 9 | 6 | 0 | 2 | 3 | 0 | 0 | 0 |
+| llama3.1:8b | Roman Urdu | rule | 11 | 9 | 0 | 0 | 0 | 0 | 0 | 0 |
+| qwen2.5:3b | English | plain | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 20 |
+| qwen2.5:3b | English | rule | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 16 |
+| qwen2.5:3b | Roman Urdu | plain | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 19 |
+| qwen2.5:3b | Roman Urdu | rule | 1 | 2 | 0 | 0 | 0 | 0 | 0 | 16 |
+
+`qwen2.5:3b` also gave a few answers that could not be scored (an id that was not in the list); see `outputs/llm_probe_summary.csv`.
 
 ## My notes
-_To be added after reading the answers._
+- With the rule in the prompt, `llama3.1:8b` stopped using unverified and non-consented memories (3 to 0 in English, 5 to 0 in Roman Urdu). But it could not spot verified memories that disagree, and picked them more often: 6 to 8 in English and 6 to 9 in Roman Urdu. No model said CONFLICT even once, so this check belongs in code, like `conflict_abstain`, not in the model.
+- In the simulator, with 20% of labels wrong, unsafe memory got past the gate in about 21% of questions. `conflict_abstain` held it to about 10%, but answered only 44% of questions.
+- `qwen2.5:3b` never picked a stale or wrong memory, but it answered "unknown" in 71 of 80 questions across both languages. It looks safe on the risk metrics, but it is not useful.
+
+## Article
+[Labels go wrong, and models do not say CONFLICT](https://masmatixinnovations.co.uk/insights/memorytrace-agent-evidence-benchmark.html)
 
 ## Limitations
 - Parts 1 and 2 are a simulator with hand-set distributions; labels are flipped independently, while real label errors are often correlated.
