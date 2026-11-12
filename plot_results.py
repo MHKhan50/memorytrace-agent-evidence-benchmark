@@ -5,7 +5,7 @@ import csv
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-COLOURS = {"provenance_gate": "#2a78d6", "strict_evidence": "#eb6834", "conflict_abstain": "#1f9e75"}
+COLOURS = {"provenance_gate": "#1F4E9C", "strict_evidence": "#E3A800", "conflict_abstain": "#5FA65A"}
 
 
 def _rows(name):
