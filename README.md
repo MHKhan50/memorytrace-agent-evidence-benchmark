@@ -1,5 +1,7 @@
 # MemoryTrace: which memory should an AI assistant trust?
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24228853.svg)](https://doi.org/10.5281/zenodo.24228853)
+
 **Area:** agentic AI, agent memory, evidence and consent
 **Version:** 1.1.0 (29 October 2026)
 **Runs on:** Python 3.9+, standard library only. Part 3 needs Ollama with `qwen2.5:3b` and `llama3.1:8b`.
